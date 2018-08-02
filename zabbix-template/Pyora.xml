@@ -1979,7 +1979,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},asm_volume_use,{#ASMVOLUME}].last(0)}&gt;{$HIGH}</expression>
+                            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},asm_volume_use,{#ASMVOLUME}].last(0)}&gt;{$HIGH}</expression>
                             <name>Oracle/ASM Volume {#ASMVOLUME} used &gt; {$HIGH} %</name>
                             <url/>
                             <status>0</status>
@@ -2123,7 +2123,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},tablespace,{#TABLESPACE}].last()}={$FS_P_USED_HIGH} and {Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},tablespace_abs,{#TABLESPACE}].last()}&lt;{$FS_FREE_LOW}</expression>
+                            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},tablespace,{#TABLESPACE}].last()}={$FS_P_USED_HIGH} and {Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},tablespace_abs,{#TABLESPACE}].last()}&lt;{$FS_FREE_LOW}</expression>
                             <name>Oracle/Tablespace {#TABLESPACE} used on {$DATABASE} high</name>
                             <url/>
                             <status>0</status>
@@ -2268,7 +2268,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},tablespace_temp,{#TABLESPACE_TEMP}].last(0)}&gt;{$HIGH}</expression>
+                            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},tablespace_temp,{#TABLESPACE_TEMP}].last(0)}&gt;{$HIGH}</expression>
                             <name>Oracle/Tablespace TEMP {#TABLESPACE_TEMP} used on {$DATABASE} &gt; {$HIGH} %</name>
                             <url/>
                             <status>0</status>
@@ -2391,7 +2391,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},check_archive,{$ARCHIVE}].last(0)}&gt;90</expression>
+            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},check_archive,{$ARCHIVE}].last()} &gt;90</expression>
             <name>Oracle/Archive {$ARCHIVE} used on {$DATABASE} &gt; 90%</name>
             <url/>
             <status>0</status>
@@ -2401,7 +2401,7 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},check_active].regexp(ORA)}=1</expression>
+            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},check_active].regexp(ORA)}=1</expression>
             <name>Oracle/Database {$DATABASE} is down or ORA error found</name>
             <url/>
             <status>0</status>
@@ -2411,7 +2411,7 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},check_active].nodata(700)}=1</expression>
+            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},check_active].nodata(700)}=1</expression>
             <name>Oracle/Database {$DATABASE} is not responding</name>
             <url/>
             <status>0</status>
@@ -2421,7 +2421,7 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},fra_use].last(0)}&gt;90</expression>
+            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},fra_use].last(0)}&gt;90</expression>
             <name>Oracle/fra_use used on {$DATABASE} &gt; 90%</name>
             <url/>
             <status>0</status>
@@ -2431,7 +2431,7 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},query_lock].last(0)}&gt;0</expression>
+            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},query_lock].last(0)}&gt;0</expression>
             <name>Oracle/Query Lock on {$DATABASE} &gt; 1</name>
             <url/>
             <status>0</status>
@@ -2441,7 +2441,7 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$DATABASE},query_sessions].last(0)}&gt;250</expression>
+            <expression>{Pyora:pyora[{$USERNAME},{$PASSWORD},{$ADDRESS},{$PORT},{$DATABASE},query_sessions].last(0)}&gt;250</expression>
             <name>Oracle/Query Sessions on {$DATABASE} &gt; 250</name>
             <url/>
             <status>0</status>

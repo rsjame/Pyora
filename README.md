@@ -79,3 +79,17 @@ Oracle Database 10g Enterprise Edition Release 10.2.0.4.0 - 64bi
 92.45
 
 </code></pre>
+
+如用root可以可以获取到数据，而用zabbix_get无法成功获取数据，多数情况下是zabbix用户下无法成功加载Oracle环境变量导致
+
+在pyora.py脚本开始处增加设置环境变量的配置
+```
+########################################################################################
+import os
+# 设置环境变量
+LD_LIBRARY_PATH=os.environ.get('LD_LIBRARY_PATH’)
+os.environ['LD_LIBRARY_PATH']= "/usr/lib/oracle/11.2/client64/lib:"+LD_LIBRARY_PATH
+os.environ['ORACLE_HOME']="/usr/lib/oracle/11.2/client64/lib”
+########################################################################################
+version = 0.2
+```
